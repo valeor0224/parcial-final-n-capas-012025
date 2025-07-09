@@ -9,7 +9,7 @@ Este repositorio contiene un proyecto para evaluar y practicar los conceptos de 
 ---
 
 **Instrucciones de registro:**
-**Registro de Usuario - POST**
+**Usuario - POST**
 
 **Descripción:**
 
@@ -35,7 +35,7 @@ No
 
 ```
 **Instrucciones de Login**
-**Login de Usuario - POST**
+**de Usuario - POST**
 
 **Descripción:**
 
