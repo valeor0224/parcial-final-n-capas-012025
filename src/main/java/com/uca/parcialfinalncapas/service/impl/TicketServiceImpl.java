@@ -80,17 +80,30 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public TicketResponse getTicketById(Long id) {
-    var ticketExistente = ticketRepository.findById(id)
-            .orElseThrow(() -> new TicketNotFoundException("Ticket no encontrado con ID: " + id));
+        var ticketExistente = ticketRepository.findById(id)
+                .orElseThrow(() -> new TicketNotFoundException("Ticket no encontrado con ID: " + id));
 
-    var usuarioSolicitante = userRepository.findById(ticketExistente.getUsuarioId())
-            .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
+        var usuarioSolicitante = userRepository.findById(ticketExistente.getUsuarioId())
+                .orElseThrow(() -> new UserNotFoundException("Usuario no encontrado"));
 
-    var usuarioSoporte = userRepository.findById(ticketExistente.getTecnicoAsignadoId())
-            .orElseThrow(() -> new UserNotFoundException("Usuario asignado no encontrado"));
+        var usuarioSoporte = userRepository.findById(ticketExistente.getTecnicoAsignadoId())
+                .orElseThrow(() -> new UserNotFoundException("Usuario asignado no encontrado"));
+
+        var auth = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+        var correoActual = auth.getName();
+
+        var usuarioActual = userRepository.findByCorreo(correoActual)
+                .orElseThrow(() -> new UserNotFoundException("Usuario autenticado no encontrado"));
+
+        if (usuarioActual.getNombreRol().equalsIgnoreCase(Rol.USER.getValue())) {
+            if (!usuarioSolicitante.getCorreo().equalsIgnoreCase(correoActual)) {
+                throw new com.uca.parcialfinalncapas.exceptions.BadTicketRequestException("No tienes permiso para ver este ticket");
+            }
+        }
 
         return TicketMapper.toDTO(ticketExistente, usuarioSolicitante.getCorreo(), usuarioSoporte.getCorreo());
     }
+
 
     @Override
     public List<TicketResponseList> getAllTickets() {
