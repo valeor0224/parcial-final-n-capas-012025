@@ -117,3 +117,21 @@ _Si van a crear mas endpoints como el login o registrarse recuerden actualizar p
 - [ ] Probar todos los flujos con Postman/Insomnia/Bruno.
 - [ ] Mostrar que los roles se comportan correctamente.
 - [ ] Incluir usuarios de prueba (`user`, `tech`) y contraseñas.
+
+
+
+**Capturas:** 
+
+**Register:**
+![image](https://github.com/user-attachments/assets/8aba9293-e426-4365-be2f-1e3ed94d790f) 
+**Login:**
+![image](https://github.com/user-attachments/assets/276d448a-6d5e-4fac-b836-918c7f501387)
+
+![image](https://github.com/user-attachments/assets/42becd8c-5bf7-4e45-a3b8-51982d9ad0fd)
+
+![image](https://github.com/user-attachments/assets/ed2879eb-ef9c-44f9-8fba-ce04f5ce49aa)
+
+![image](https://github.com/user-attachments/assets/ab2e7742-4697-4bdc-b554-6ab47c3e6cdb)
+
+![image](https://github.com/user-attachments/assets/8ac15690-bc50-4e2e-9b09-443fb8e7c55d)
+
