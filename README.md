@@ -8,6 +8,33 @@ Este repositorio contiene un proyecto para evaluar y practicar los conceptos de 
 - Sección: 02
 ---
 
+**Instrucciones de registro:**
+**Registro de Usuario - POST**
+
+**Descripción:**
+
+Este endpoint permite registrar un nuevo usuario en el sistema con rol asignado (`USER` o `TECH`).
+
+**URL:**
+
+`POST {{baseUrl}}/auth/register`
+
+**¿Autenticación?:**
+
+No
+
+**Cuerpo de la solicitud (JSON):**
+
+```json
+{
+  "nombre": "Test",
+  "correo": "test@correo.com",
+  "password": "123456",
+  "nombreRol": "USER"
+}
+
+```
+
 ## Sistema de Soporte Técnico
 
 ### Descripción
