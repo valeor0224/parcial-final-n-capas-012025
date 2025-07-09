@@ -23,7 +23,7 @@ Este endpoint permite registrar un nuevo usuario en el sistema con rol asignado 
 
 No
 
-**Cuerpo de la solicitud (JSON):**
+**Ejemplo cuerpo de la solicitud (JSON):**
 
 ```json
 {
@@ -34,6 +34,31 @@ No
 }
 
 ```
+**Instrucciones de Login**
+**Login de Usuario - POST**
+
+**Descripción:**
+
+Este endpoint autentica permite autenticar y regresa un **token JWT**.
+
+**URL:**
+
+`POST {{baseUrl}}/auth/login`
+
+**¿Autenticación?:**
+
+No
+
+**Ejemplo cuerpo de la solicitud (JSON):**
+
+```json
+{
+  "correo": "tech@demo.com",
+  "password": "123456"
+}
+
+```
+
 
 ## Sistema de Soporte Técnico
 
