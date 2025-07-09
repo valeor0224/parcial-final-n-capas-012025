@@ -23,39 +23,32 @@ public class JwtTokenProvider {
         Date now = new Date();
         Date expirationDate = new Date(now.getTime() + Long.parseLong(expirationTime));
 
-        String token = Jwts.builder()
+        return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(now)
                 .setExpiration(expirationDate)
                 .signWith(getKey())
                 .compact();
-        return token;
     }
 
-    // Retrieves the secret key for signing and validating the JWT
     private Key getKey() {
-        return Keys.hmacShaKeyFor(
-                Decoders.BASE64.decode(secret)
-        );
+        return Keys.hmacShaKeyFor(Decoders.BASE64.decode(secret));
     }
 
-    // Extracts the username from the provided JWT token
     public String getUsernameFromToken(String token) {
-        String username = Jwts.parser() // Parse the JWT token
-                .setSigningKey(getKey()) // Use the secret key for validation
+        return Jwts.parser()
+                .setSigningKey(getKey())
                 .build()
-                .parseClaimsJws(token) // Parse the claims from the token
+                .parseClaimsJws(token)
                 .getBody()
-                .getSubject(); // Retrieve the subject (username) from the claims
-        return username; // Return the extracted username
+                .getSubject();
     }
 
-    // Validates the provided JWT token
     public boolean validateToken(String token) {
-        Jwts.parser() // Parse the JWT token
-                .setSigningKey(getKey()) // Use the secret key for validation
+        Jwts.parser()
+                .setSigningKey(getKey())
                 .build()
-                .parse(token); // Validate the token structure and signature
-        return true; // Return true if the token is valid
+                .parse(token);
+        return true;
     }
 }
